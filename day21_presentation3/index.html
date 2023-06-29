@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <!-- <script type="text/javascript" src="script.js"></script>
+  <link rel="stylesheet" herf="style.css"> -->
+
+  <!--　epoch 用追加部（必須ライブラリ読み込み -->
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.js"></script>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="epoch\epoch.css">
+  <script src="epoch\epoch.min.js"></script>
+
+</head>
+
+<!-- HTML JSResult Skip Results Iframe
+EDIT ON -->
+
+ 
+<!-- epoch.try_気温・湿度 -->
+<body>
+  <h1>DIG FND17 プレゼンテーション</h1>
+  <h2>対象： <font color="blue"> RDE（Real Drive Emission）認証試験</font><br>
+    お客様： <font color="blue"> 認証審査官</font> <br>
+  </h2>
+  <h2>提供価値：RDE認証試験効率化</h2>
+  
+  <h3>RDE試験成立条件を遠隔地の審査官がリアルタイム把握/判断<br>
+  　→　うまく活用すれば、将来的には立会い試験も不要とできるポテンシャル有。需要有なら実用化検討。</h3>
+
+  <h4>【参考】RDE試験概要（国交省資料）</h4>
+
+  <iframe class="fit-iframe" src="https://www.mlit.go.jp/common/001121839.pdf" width="100%" height="100%" 
+  margin = 1000px;   ></iframe>
+  　<style>
+    iframe[src$=".pdf"]{
+        width:100%;
+        height:80vh;
+        margin: 1000px;        
+
+        /* margin: 0 auto;         */
+    }
+    </style>
+  <iframe class="fit-iframe" src="https://www.mlit.go.jp/common/001148095.pdf" width="100%" height="100%"></iframe>
+    <style>
+      iframe[src$=".pdf"]{
+          width:100%;
+          height:80vh;
+          margin: 0 auto;
+      }
+    </style>
+
+<h4>【参考】シャシーダイナモメータによる試験概要</h4>
+<!-- <<img src="https://th.bing.com/th/id/R.76e155cc5394f3c45eb509d6d28c4ac8?rik=zAJJ3LRxgXEZ5w&riu=http%3a%2f%2fataj.or.jp%2ftrust%2ftrust_page_figures%2fphoto9_test+equipment.png&ehk=UR84jbWL1aETMrzI%2beuxC1VkiFg1tj8Xw4lodsvrg%2fk%3d&risl=&pid=ImgRaw&r=0" width="100%" height="100%"></iframe> -->
+
+<img class="fit-picture" src="https://lh3.googleusercontent.com/proxy/eMp5LxrfXS1HIeE1RpZwQPXKUQT1GCK3LtX4rDEjkY0cEd0hilE6jbEn4LKK8V0lMxaXHuR3JiiVM1PxfRjxIlTDy-wwJToHysp-aTFBPnCdznmuPDszmD60B2D6_YGuMg=s0-d" width="100%" height="100%"></iframe>
+
+
+
+<!-- <style>
+  iframe[src$=".pdf"]{
+      width:100%;
+      height:80vh;
+  }
+</style> -->
+<!-- 
+  <pdf-viewer id="viewer"></pdf-viewer>
+  <script type="module" src="main.js"></script>
+  <script type="module" src="pdf_viewer_wrapper.js"></script> -->
+<!-- 
+  <iframe width="1000" height="600" src="https://www.mlit.go.jp/common/001121839.pdf"> -->
+<!--     
+  <object data="https://www.mlit.go.jp/common/001121839.pdf" type="application/pdf" width="100%" height="100%">
+    </object
+  <emebed src="https://www.mlit.go.jp/common/001121839.pdf" width="100%" height="100%"> -->
+  <!-- <img src="https://www.mlit.go.jp/common/001121839.pdf"> -->
+  
+  <h3>対応ツール プロトタイプ（ダミーデータ使用_イメージ）</h3>
+
+<!-- メモ
+・グラフタイトル、ラベル 等整理
+・lavel の値をリアルタイムグラフに追加
+・採用判断 イベントリスナー＆アラート で確認   -->
+  
+
+  <style>
+    /* 線の色の変更 */
+    .epoch .category1 .line {
+      stroke: #dc3545;
+    }
+ 
+    .epoch .category2 .line {
+      stroke: #17a2b8;
+    }
+ </style>
+ <div class="container">
+     <h1 class="text-center">現在の気温・湿度</h1>
+     <div class="row">
+         <div class="mx-auto">
+             <p>
+                 気温：<img width="40" height="20" class="bg-danger">　
+                 湿度：<img width="40" height="20" class="bg-info">
+             </p>
+         </div>
+         <div id="myChart" class="epoch" style="width: 100%; height: 200px">
+         </div>
+     </div>
+     <div class="row mt-3">
+         <div class="col-12">
+             <form>
+                 <div class="form-group">
+                     <label for="temperature">気温（－１５℃～３５℃）</label>
+                     <input id="temperature" type="range" class="form-control-range" min="-15" max="35" value="20">
+                 </div>
+                 <div class="form-group">
+                     <label for="humidity">湿度（０％～１００％）</label>
+                     <input id="humidity" type="range" class="form-control-range" min="0" max="100">
+                 </div>
+             </form>
+         </div>
+     </div>
+ </div>
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+         crossorigin="anonymous"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+         crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ja.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.3.13/d3.js" charset="utf-8"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/epoch/0.8.4/js/epoch.min.js"></script>
+ 
+
+
+
+ <h3>Real Time Data @RDE（Real Drive Emission）試験</h3>
+ <h3></h3>
+
+<!-- epoch.try -->
+    <div id="real-time-line" class="epoch" style="height: 300px"></div>
+
+    <script>
+      // ダミーデータ生成部
+    (function() {
+        let RealTimeData = function(layers, ranges, bounds) {
+          this.layers = layers;
+          this.bounds = bounds || [];
+          this.ranges = ranges || [];
+          this.timestamp = ((new Date()).getTime() / 1000)|0;
+        };
+  
+        RealTimeData.prototype.rand = function(bound) {
+          bound = bound || 100;
+          return parseInt(Math.random() * bound) + 50;
+        };
+  
+        RealTimeData.prototype.history = function(entries) {
+          if (typeof(entries) != 'number' || !entries) {
+              entries = 60;
+          }
+  
+          let history = [];
+          for (let k = 0; k < this.layers; k++) {
+              let config = { values: [] };
+              if(this.ranges[k]) {
+                  config.range = this.ranges[k];
+              console.log(config);
+              }
+  
+              history.push(config);
+          }
+  
+          for (let i = 0; i < entries; i++) {
+              for (let j = 0; j < this.layers; j++) {
+                  history[j].values.push({time: this.timestamp, y: this.rand(this.bounds[j])});
+              }
+              this.timestamp++;
+          }
+  
+          return history;
+        };
+  
+        RealTimeData.prototype.next = function() {
+          let entry = [];
+          for (let i = 0; i < this.layers; i++) {
+              entry.push({ time: this.timestamp, y: this.rand(this.bounds[i]) });
+          }
+          this.timestamp++;
+          return entry;
+        }
+  
+        window.RealTimeData = RealTimeData;
+  
+    })();
+      // ダミーデータ生成はここまで
+  
+      // ここからが本体
+      $(function() {
+        let data = new RealTimeData(2);   // 偽のデータ系列の数
+  
+        let chart = $('#real-time-line').epoch({
+          type: 'time.line',
+          data: data.history(),
+          axes: ['left', 'bottom', 'right']
+        });
+  
+        setInterval(function() { chart.push(data.next()); }, 1000);  // １秒毎に偽のデータをpushしている
+        chart.push(data.next());
+      });
+
+      $(function() {
+        let data = new RealTimeData(2);   // 偽のデータ系列の数
+  
+        let chart = $('#real-time-line').epoch({
+          type: 'time.line',
+          data: data.history(),
+          axes: ['left', 'bottom', 'right']
+        });
+  
+        setInterval(function() { chart.push(data.next()); }, 1000);  // １秒毎に偽のデータをpushしている
+        chart.push(data.next());
+      });
+    </script>
+
+    </script>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,33 @@
+
+
+h3{
+    text-align: center;
+    
+    margin: 100 auto;
+}
+
+h4{
+    text-align: center;
+    margin: 1em;
+    /* margin: 100 auto; */
+}
+
+.fit-iframe{
+    margin: 1em;
+        /* margin: 100 auto; */
+}
+
+
+
+#wanigate{
+    width: 200px;
+    height: 200px;
+    background-color: #00ff7f;
+    margin: 0 auto;
+}
+
+#waniyard{
+    width: 300px;
+    background-color: #00ccff;
+    margin: 0 auto;
+}
