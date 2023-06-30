@@ -1,16 +1,22 @@
 
+h1{
+    text-align: center;
+}
 
 h3{
-    text-align: center;
-    
-    margin: 100 auto;
+    text-align: left;
+    margin: 100;
+    /* background-color: #00ff7f; */
 }
 
 h4{
-    text-align: center;
-    margin: 1em;
-    /* margin: 100 auto; */
+    text-align: left;
+    margin: 100;
+    background-color: #00ffff;
+
 }
+    /* margin: 100 auto; */
+
 
 .fit-iframe{
     margin: 1em;
@@ -19,15 +25,15 @@ h4{
 
 
 
-#wanigate{
-    width: 200px;
-    height: 200px;
-    background-color: #00ff7f;
+#Yesfield{
+    /* width: 200px;
+    height: 200px; */
+    background-color: #ffae00;
     margin: 0 auto;
 }
 
-#waniyard{
-    width: 300px;
+#Nofield{
+    /* width: 300px; */
     background-color: #00ccff;
     margin: 0 auto;
 }

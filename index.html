@@ -12,6 +12,7 @@
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.js"></script>
   <script src="https://d3js.org/d3.v3.min.js"></script>
   <link rel="stylesheet" type="text/css" href="epoch\epoch.css">
+  <link rel="stylesheet" href="gators.css">
   <script src="epoch\epoch.min.js"></script>
 
 </head>
@@ -23,10 +24,10 @@ EDIT ON -->
 <!-- epoch.try_気温・湿度 -->
 <body>
   <h1>DIG FND17 プレゼンテーション</h1>
-  <h2>対象： <font color="blue"> RDE（Real Drive Emission）認証試験</font><br>
-    お客様： <font color="blue"> 認証審査官</font> <br>
+  <h2>対象： <font color="red"> RDE（Real Drive Emission）認証試験</font><br>
+    お客様： <font color="red"> 認証審査官</font> <br>
   </h2>
-  <h2>提供価値：RDE認証試験効率化</h2>
+  <h2>提供価値：<font color="blue">RDE認証試験効率化</font></h2>
   
   <h3>RDE試験成立条件を遠隔地の審査官がリアルタイム把握/判断<br>
   　→　うまく活用すれば、将来的には立会い試験も不要とできるポテンシャル有。需要有なら実用化検討。</h3>
@@ -135,11 +136,12 @@ EDIT ON -->
  <script src="https://cdnjs.cloudflare.com/ajax/libs/epoch/0.8.4/js/epoch.min.js"></script>
  
 
-
+ 
 
  <h3>Real Time Data @RDE（Real Drive Emission）試験</h3>
  <h3></h3>
 
+ <div class="brack">
 <!-- epoch.try -->
     <div id="real-time-line" class="epoch" style="height: 300px"></div>
 
@@ -227,8 +229,21 @@ EDIT ON -->
     </script>
 
     </script>
+  </div
+  >
+    <h3>このツール、欲しいですか？</h3>
+
+    <div id="Yes">
+      <button id="Yesbutton">Yes</button>
+    </div>
+   <div id="Yesfield"></div>
+   
+   <div id="No">
+    <button id="Nobutton">No</button>
+  </div>
+ <div id="Nofield"></div>
 
 
-
+ <script src="script.js"></script>
   </body>
 </html>
