@@ -27,10 +27,10 @@ EDIT ON -->
   <h2>対象： <font color="red"> RDE（Real Drive Emission）認証試験</font><br>
     お客様： <font color="red"> 認証審査官</font> <br>
   </h2>
-  <h2>提供価値：<font color="blue">RDE認証試験効率化</font></h2>
+  <h2>提供価値：<font color="blue">RDE認証試験の効率的な審査</font></h2>
   
-  <h3>RDE試験成立条件を遠隔地の審査官がリアルタイム把握/判断<br>
-  　→　うまく活用すれば、将来的には立会い試験も不要とできるポテンシャル有。需要有なら実用化検討。</h3>
+  <ul>RDE試験状況を、遠隔地の審査官がリアルタイムに把握/判断<br>
+  　→　うまく活用すれば、将来的には立会い試験も不要とできるポテンシャル有。需要有なら実用化検討。</ul>
 
   <h4>【参考】RDE試験概要（国交省資料）</h4>
 
@@ -97,8 +97,8 @@ EDIT ON -->
       stroke: #17a2b8;
     }
  </style>
- <div class="container">
-     <h1 class="text-center">現在の気温・湿度</h1>
+ <!-- <div class="container">
+     <h3 class="text-center">現在の気温・湿度</h3>
      <div class="row">
          <div class="mx-auto">
              <p>
@@ -134,12 +134,19 @@ EDIT ON -->
  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ja.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.3.13/d3.js" charset="utf-8"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/epoch/0.8.4/js/epoch.min.js"></script>
- 
+  -->
 
- 
+ <em></em>
 
- <h3>Real Time Data @RDE（Real Drive Emission）試験</h3>
- <h3></h3>
+<div id="container">
+  <div id="box1">
+    <strong>Element_1 </strong>
+    <!-- <img width="40" height="20" color=" #dc3545" class="bg-danger">　 -->
+  </div><br>
+  <div id="box2">
+    <strong>Element_2 </strong>
+  </div>
+</div>
 
  <div class="brack">
 <!-- epoch.try -->
@@ -229,9 +236,12 @@ EDIT ON -->
     </script>
 
     </script>
-  </div
-  >
-    <h3>このツール、欲しいですか？</h3>
+  </div>
+  
+ <p id="demo">図１．Real Time Data @RDE（Real Drive Emission）試験</p><br>
+
+  
+    <p id="ask">このツール、欲しいですか？</id>
 
     <div id="Yes">
       <button id="Yesbutton">Yes</button>
@@ -243,6 +253,122 @@ EDIT ON -->
   </div>
  <div id="Nofield"></div>
 
+ <!-- フォーム処理をする場合、 -->
+<!-- <form action="/cgi-bin/sample.cgi" method="POST"> -->
+
+  <p id="caution">※購入を検討される方は、以下のフォームに入力して下さい</p>
+
+ <p>
+  <label>名前：<input type="text" id="nametext"></label>
+  </p>
+  <p>
+    <label>TEL：<input type="text" id="tel"></label>
+  </p>
+  <p>
+    <label>email：<input type="text" id="email"></label>
+  </p>
+  <!-- <p>
+    <label>名前：<input type="text" id="nametext"></label>
+  </p> -->
+  
+  <p>
+  <label>勤務地：
+      <select id="address">
+      <option value="">選択してください</option>
+      <option value="kanto">関東</option>
+      <option value="tokai">東海</option>
+      <option value="kansai">関西</option>
+      </select>
+  </label>
+  </p>
+  
+  <p>
+    採用する素案<br>
+  <input type="radio" id="A-type" name="div" value="A-type" checked>
+  <label for="A">A案</label><br>
+  <input type="radio" id="B-type" name="div" value="B-type">
+  <label for="B">B案</label><br>
+  <input type="radio" id="C-type" name="div" value="C-type">
+  <label for="C">C案</label><br>
+  </p>
+
+  <p>
+    <fieldset>
+      <legend>表示させたい要素を選んでください</legend>
+      <div>
+        <input type="checkbox" id="verocity" name="verocity" value="verocity" />
+        <label for="verocity">車速</label>
+      </div>
+      <div>
+        <input type="checkbox" id="accel" name="accel" value="accel" />
+        <label for="accel">アクセル開度</label>
+      </div>
+      <div>
+        <input type="checkbox" id="brake" name="brake" value="brake" />
+        <label for="brake">ブレーキ踏力</label>
+      </div>
+      <div>
+        <input type="checkbox" id="NOx" name="NOx" value="NOx" />
+        <label for="NOx">NOx</label>
+      </div>
+      <div>
+        <input type="checkbox" id="co" name="co" value="co" />
+        <label for="co">CO</label>
+      </div>
+      <div>
+        <input type="checkbox" id="THC" name="THC" value="THC" />
+        <label for="THC">THC</label>
+      </div>
+      <div>
+        <input type="checkbox" id="NMHC" name="NMHC" value="NMHC" />
+        <label for="NMHC">NMHC</label>
+      </div>
+      <div>
+        <input type="checkbox" id="co2" name="co2" value="co2" />
+        <label for="co2">CO2</label>
+      </div>
+    </fieldset>
+  </p>
+
+  <p>
+    ＜アンケート＞ このHPの満足度を教えて下さい<br>
+  <form>
+     <div class="form-group">
+        <label for="humidity">採点（０点～１００点）</label>
+        <input id="humidity" type="range" class="form-control-range" min="0" max="100">
+    </div>
+</form>
+
+  
+<!-- </form> -->
+  
+  <script>
+  function inputChange(event){
+      console.log(event.currentTarget.value);
+  }
+  
+  let text = document.getElementById('nametext');
+  text.addEventListener('change', inputChange);
+  
+  let tel = document.getElementById('tel');
+  tel.addEventListener('change', inputChange);
+  
+  let email = document.getElementById('email');
+  email.addEventListener('change', inputChange);
+  
+  let address = document.getElementById('address');
+  address.addEventListener('change', inputChange);
+  
+  let radiosales = document.getElementById('A-type');
+  radiosales.addEventListener('change', inputChange);
+  
+  let radiodevelop = document.getElementById('B-type');
+  radiodevelop.addEventListener('change', inputChange);
+  
+  let radiohuman = document.getElementById('C-type');
+  radiohuman.addEventListener('change', inputChange);
+  </script>
+  
 
  <script src="script.js"></script>
   </body>

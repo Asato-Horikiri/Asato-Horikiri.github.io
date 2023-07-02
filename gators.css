@@ -3,7 +3,8 @@ h1{
     text-align: center;
 }
 
-h3{
+ul{
+    font-size: 120%;
     text-align: left;
     margin: 100;
     /* background-color: #00ff7f; */
@@ -17,6 +18,31 @@ h4{
 }
     /* margin: 100 auto; */
 
+#container{
+    display: flex;
+    width: fit-content;
+    border: 2px solid;
+    /* display: inline; */
+    position: relative;
+    left: 10em;
+    /* text-align: right; */
+    /* word-spacing: 30px; */
+}
+
+    /* text-indent: 10%; */
+
+#box1{
+    color: #dc3545; 
+    padding: 0.5em;
+
+    /* margin: 200;    */
+}
+#box2{
+    color: #17a2b8;
+    padding: 0.5em;
+
+    /* margin: 200;     */
+}
 
 .fit-iframe{
     margin: 1em;
@@ -25,15 +51,44 @@ h4{
 
 
 
+#demo{
+    /* width: 300px; */
+    /* background-color: #00ccff; */
+    margin: 200;
+    /* color: red; */
+    font-size: 120%;
+    text-align: center;
+    }
+
+#caution{
+    /* width: 300px; */
+    /* background-color: #00ccff; */
+    margin: 200;
+    color: red;
+    font-size: 120%;
+    }
+
+
+#ask{
+    size: 200%;
+    text-align: left;
+    margin: 300;
+    background-color: #00ffff;
+}
+
 #Yesfield{
     /* width: 200px;
     height: 200px; */
     background-color: #ffae00;
     margin: 0 auto;
+    color: red;
+    font-size: 300%;
 }
 
 #Nofield{
     /* width: 300px; */
-    background-color: #00ccff;
+    background-color: #00ff2a;
     margin: 0 auto;
-}
+    color: red;
+    font-size: 300%;
+    }

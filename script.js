@@ -13,9 +13,9 @@ Yesbutton.addEventListener("click",Yesjudge);
 
 function Yesjudge(){
   const YesAnswer = document.createElement("p");
-  YesAnswer.textContent = "Thank you for your purchase !"    
+  YesAnswer.textContent = "Thank you for your purchase ! Fill out forms."    
   document.getElementById("Yesfield").appendChild(YesAnswer);
-  window.alert("Thank you for your purchase !")
+  window.alert("Thank you for your purchase ! Fill out forms.")
 }
 
 
@@ -26,7 +26,8 @@ function Nojudge(){
   const background = document.body;
   background.style.backgroundColor = "gray";
   const NoAnswer = document.createElement("p");
-  NoAnswer.textContent = "Hopefully next time..."    
+  NoAnswer.textContent = "";
+  NoAnswer.textContent = "I'm sorry. Hopefully next time... 佐瀬さん、次のプレゼンよろしくお願いします！"    
   document.getElementById("Nofield").appendChild(NoAnswer);
-  window.alert("Hopefully next time...")
+  window.alert("I'm sorry. Hopefully next time... ")
 }
